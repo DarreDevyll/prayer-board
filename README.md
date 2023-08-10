@@ -1,8 +1,8 @@
 # prayer-board
 My work for building a prayerboard webapp
 
-## Front-end
+## frontend
 React app for viewing, adding, and editing the prayer list
 
-## Back-end
+## backend
 Express app for taking front end actions and converting them into SQL Queries
