@@ -30,8 +30,8 @@ class Home extends Component {
   render(){
   let elem1 = {}
 
-  let getData = function({title, description, uid, date}) {
-    return {title, description, uid, date};
+  let getData = function({title, description, name, dateCreated}) {
+    return {title, description, name, dateCreated};
   }
   if (this.state.body[0] !== undefined) {
     console.log(this.state.body);
@@ -42,7 +42,11 @@ class Home extends Component {
       <div>
         <p>This is the home page</p>
       </div>
-      <List data={elem1 || 0} />
+      {
+        Object.keys(this.state.body).map(key => {
+          return (<List data={getData(this.state.body[key]) || 0} />)
+        })
+      }
     </>
   )}
 }

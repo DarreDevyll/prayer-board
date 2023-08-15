@@ -13,9 +13,11 @@ export const Prayer = styled.div`
 `
 
 export const Title = styled.div`
+  font-size: 36px;
 `
 
 export const Description = styled.div`
+  font-size: 24px;
 `
 
 export const Footer = styled.div`
@@ -23,7 +25,13 @@ export const Footer = styled.div`
 `
 
 export const Author = styled.div`
+  font-size: 16px;
+  width: 100%;
+  text-align: right;
 `
 
 export const Date = styled.div`
+  font-size: 16px;
+  width: 100%;
+  text-align: right;
 `

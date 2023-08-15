@@ -40,7 +40,7 @@ module.exports = function(req, res, next) {
 app.get("/", (req, res) => {
     pool.getConnection()
     .then((conn) => {
-        conn.query("SELECT * FROM prayers;")
+        conn.query("SELECT prayers.id, users.name, title, description, prayers.dateCreated from prayers left join users on prayers.uid = users.id;")
         .then((rows) => {
             res.send(rows);
             conn.end();
