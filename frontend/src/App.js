@@ -32,10 +32,24 @@ mobile: '768px',
 }
 
 class App extends Component {
-  state = { data: 0, theme: darkTheme};
+  state = { data: 0, theme: darkTheme, body: {}};
 
   componentDidMount() {
-    this.state.theme = lightTheme;
+    this.callBackendAPI()
+      .then(res => this.setState({ data: res.express}))
+      .catch(err => console.log(err));
+  }
+  
+  callBackendAPI = async () => {
+    const response = await fetch('http://localhost:5000/getprayers');
+    const body = await response.json();
+  
+    if (response.status !== 200) {
+      throw Error(body.message);
+    }
+    this.state.body = body
+    console.log(this.state.body);
+    return body;
   }
 
   //function App() {

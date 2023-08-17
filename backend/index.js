@@ -60,6 +60,43 @@ app.get("/prayers", (req, res) => {
     });
 });
 
+app.get("/numprayers", (req, res) => {
+    pool.getConnection()
+    .then((conn) => {
+        conn.query("SELECT count(*) from prayers;")
+        .then((rows) => {
+            rows[0]['count(*)'] = parseInt(rows[0]['count(*)'].toString(), 10);
+            res.send(rows);
+            conn.end();
+        })
+        .catch(err => {
+            console.log(err);
+            conn.end();
+        })
+    })
+    .catch(err => {
+        console.log(err);
+    });
+});
+
+app.get("/prayers", (req, res) => {
+    pool.getConnection()
+    .then((conn) => {
+        conn.query("SELECT count(*) from testimonies;")
+        .then((rows) => {
+            res.send(rows);
+            conn.end();
+        })
+        .catch(err => {
+            console.log(err);
+            conn.end();
+        })
+    })
+    .catch(err => {
+        console.log(err);
+    });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
 });
