@@ -1,5 +1,7 @@
-import List from "../components/List";
 import {Component} from 'react';
+
+import { Content } from '../components/styles/Content.styled';
+import List from "../components/List";
 
 class Home extends Component {
   constructor(props) {
@@ -30,9 +32,11 @@ class Home extends Component {
   render(){
   return (
     <>
+    <Content>
       <div>
         <p>This is the home page</p>
       </div>
+    </Content>
     </>
   )}
 }

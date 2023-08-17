@@ -1,5 +1,7 @@
-import List from "../components/List";
 import {Component} from 'react';
+
+import { Content } from '../components/styles/Content.styled';
+import List from "../components/List";
 
 class Prayers extends Component {
   constructor(props) {
@@ -35,6 +37,7 @@ class Prayers extends Component {
   }
   return (
     <>
+    <Content>
       <div>
         <p>This is the prayers page</p>
       </div>
@@ -43,6 +46,7 @@ class Prayers extends Component {
           return (<List data={getData(this.state.body[key]) || 0} />)
         })
       }
+    </Content>
     </>
   )}
 }
