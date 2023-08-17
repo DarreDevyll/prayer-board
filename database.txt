@@ -1,0 +1,20 @@
+USE testBoard;
+
+create table users (
+  id int not null unique auto_increment,
+  name varchar(20),
+  login varchar(20), 
+  email varchar(40), 
+  password varchar(20), 
+  primary key(id)
+);
+
+create table prayers (
+  id int not null unique auto_increment,
+  uid int,
+  title varchar(100),
+  description varchar(200),
+  primary key(id),
+  foreign key(uid)
+    references users(id)
+);
