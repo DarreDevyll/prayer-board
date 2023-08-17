@@ -35,6 +35,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         min-height: 100vh;
         overflow: overlay;
+        overflow-x: hidden;
         background: ${({ theme }) => theme.colors.body};
         color: hsl(192, 100%, 9%);
         font-family: Arial, sans-serif;

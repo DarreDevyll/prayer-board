@@ -9,8 +9,7 @@ export default function List({data: {title, description, name, dateCreated}}) {
     d = new window.Date(dateCreated);
     d = Intl.DateTimeFormat('en-US', options).format(d);
   }
-  
-  console.log(d);
+
   return (
     <>
     <Card>
@@ -20,7 +19,7 @@ export default function List({data: {title, description, name, dateCreated}}) {
       </Prayer>
       <Footer>
         <Author>~{name || "Anonymous"}</Author>
-        <Date>{d || "February, January 30th, 2023"}</Date>
+        <Date>{d || "Monday, January 30th, 2023"}</Date>
       </Footer>
     </Card>
     </>

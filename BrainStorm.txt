@@ -1,0 +1,33 @@
+Components:
+Nav:
+- bar
+- button
+  - logo
+
+Theme Changer Button:
+
+Header:
+
+Body:
+- Prayer/Testimony List:
+  - Filter Buttons:
+  - List Cards
+
+- About Content:
+
+- Login/SignUp:
+
+Footer:
+
+
+
+Theme Ideas:
+Light Theme:
+background: white
+buttons:yellow, red
+Text: red/black
+
+Dark Theme:
+background: black
+buttons: orange, red
+text: yellow, white
