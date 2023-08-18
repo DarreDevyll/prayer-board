@@ -38,7 +38,23 @@ module.exports = function(req, res, next) {
 }*/
 
 app.get("/", (req, res) => {
-    res.send("Connected to back end.");
+    pool.getConnection()
+    .then((conn) => {
+        conn.query("select * from prayers")
+        .then((rows) => {
+            res.send("Connected to the backend. Database Connected. Database assumed to be Configured.");
+            conn.end();
+        })
+        .catch(err => {
+            console.log(err);
+            conn.end();
+            res.send("Connected to the backend. Database Connected. Database not Configured.")
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        res.send("Connected to the backend. Database not Connected.")
+    });
 });
 
 
@@ -63,9 +79,9 @@ app.get("/prayers", (req, res) => {
 app.get("/numprayers", (req, res) => {
     pool.getConnection()
     .then((conn) => {
-        conn.query("SELECT count(*) from prayers;")
+        conn.query("SELECT count(*) as numprayers from prayers;")
         .then((rows) => {
-            rows[0]['count(*)'] = parseInt(rows[0]['count(*)'].toString(), 10);
+            rows[0]['numprayers'] = parseInt(rows[0]['numprayers'].toString(), 10);
             res.send(rows);
             conn.end();
         })
@@ -79,11 +95,12 @@ app.get("/numprayers", (req, res) => {
     });
 });
 
-app.get("/prayers", (req, res) => {
+app.get("/numtestimonies", (req, res) => {
     pool.getConnection()
     .then((conn) => {
-        conn.query("SELECT count(*) from testimonies;")
+        conn.query("SELECT count(*) as numtestimonies from testimonies;")
         .then((rows) => {
+            rows[0]['numtestimonies'] = parseInt(rows[0]['numtestimonies'].toString(), 10);
             res.send(rows);
             conn.end();
         })

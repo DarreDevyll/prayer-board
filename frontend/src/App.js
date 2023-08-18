@@ -32,7 +32,7 @@ mobile: '768px',
 }
 
 class App extends Component {
-  state = { data: 0, theme: darkTheme, body: {}};
+  state = { data: {}, themeSetting: 0,theme: darkTheme, body: {}};
 
   componentDidMount() {
     this.callBackendAPI()
@@ -41,7 +41,7 @@ class App extends Component {
   }
   
   callBackendAPI = async () => {
-    const response = await fetch('http://localhost:5000/getprayers');
+    const response = await fetch('http://localhost:5000/numprayers');
     const body = await response.json();
   
     if (response.status !== 200) {
@@ -56,21 +56,19 @@ class App extends Component {
   render() {
     
   const childToParent = (childdata) => {
-    if (this.state.data == 0)
+    if (this.state.themeSetting == 0)
     {
-      this.state.data = childdata;
+      this.state.themeSetting = childdata;
       this.state.theme = darkTheme;
     }
     else
     {
-      this.state.data = 0;
+      this.state.themeSetting = 0;
       this.state.theme = lightTheme;
     }
-    console.log(this.state.data)
+    console.log(this.state.themeSetting)
     console.log(this.state.theme)
   }
-
-  console.log(this.state.data);
 
   return (
     <>
