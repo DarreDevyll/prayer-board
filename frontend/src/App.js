@@ -12,6 +12,7 @@ import './App.css';
 import Home from './pages/Home';
 import Prayers from './pages/Prayers';
 import Testimonies from './pages/Testimonies';
+import Signup from './pages/Signup';
 
 const lightTheme = {
   colors: {
@@ -82,7 +83,7 @@ class App extends Component {
             <Route path='/' exact element={<Home />} />
             <Route path='/prayers' exact element={<Prayers />} />
             <Route path='/testimonies' exact element={<Testimonies />} />
-            <Route path='/signup' exact element={<Home />} />
+            <Route path='/signup' exact element={<Signup />} />
           </Routes>
         </ThemeProvider>
       </Router>
