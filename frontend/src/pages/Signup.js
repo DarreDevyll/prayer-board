@@ -7,9 +7,7 @@ import UserCreationForm from "../components/UserCreationForm";
 
 
 class Signup extends Component {
-
-
-
+  
   render() {
   return (
     <>

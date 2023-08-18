@@ -13,29 +13,35 @@ import {
   Req
 } from "./styles/UserCreationForm.styled"
 import Captcha from "./Captcha";
-import { useState, useRef, useEffect } from "react";
-import {time, input} from "./Captcha";
+import { createRef } from "react";
 
 class UserCreationForm extends Component {
   constructor (props) {
     super(props);
 
     this.state = { 
+      nameForm: createRef(),
       FormData: {
       "name": "",
       "loginID": "",
       "email": "",
       "password": "",
+      CaptchaData: {
+        input: null,
+        time: null
+      }
       },
       Submitted: false
     };
     
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getCaptchaData = this.getCaptchaData.bind(this);
   }
     
   // Changing FormData apon fields being filled out
   handleChange(event) {
+    // Add values to FormData State
     const field = event.target.name;
     var FormData = this.state.FormData;
     FormData[field] = event.target.value;
@@ -46,6 +52,7 @@ class UserCreationForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
+
     // HTTP options for fetch
     const options = {
       method: 'POST',
@@ -55,6 +62,9 @@ class UserCreationForm extends Component {
       body: JSON.stringify(this.state.FormData)
     }
 
+    console.log(this.state.FormData);
+
+    /*
     // Posting form to endpoint, and changing Submitted flag if successful (status = 201)
     fetch('https://localhost:5000/createUser', options)
     .then((response) => {
@@ -66,9 +76,16 @@ class UserCreationForm extends Component {
     .catch((err) => {
         console.log(err.message);
     })
+    */
   }
 
-  // Getting form options on component mount
+  getCaptchaData = (data) => {
+    this.state.FormData.CaptchaData.time = data.time;
+    this.state.FormData.CaptchaData.input = data.input;
+  }
+
+
+  
   componentDidMount() {
   }
 
@@ -79,7 +96,7 @@ class UserCreationForm extends Component {
     <CompletedFormMessage show={this.state.Submitted}>
         Form Successfully Submitted<br /> Thank you for your submission
     </CompletedFormMessage>
-    <StyledForm onSubmit={this.handleSubmit} show={this.state.Submitted}>
+    <StyledForm onSubmit={this.handleSubmit} show={this.state.Submitted} ref={this.state.nameForm}>
       <FieldContainer>
         <Label>Name<Req>*</Req></Label>
         <FieldDescription>This is the name that will be displayed when making prayers/testimonies. We prefer your real first name.</FieldDescription>
@@ -89,7 +106,7 @@ class UserCreationForm extends Component {
       <FieldContainer>
         <Label>LoginID<Req>*</Req></Label>
         <FieldDescription>This is the name you will use to sign into your account. Feel free to make it whatever you want.</FieldDescription>
-        <Field type="text" name="name" required 
+        <Field type="text" name="loginID" required 
           value={this.state.FormData["loginID"]} onChange={this.handleChange} />
       </FieldContainer>
       <FieldContainer>
@@ -103,6 +120,9 @@ class UserCreationForm extends Component {
         <FieldDescription>This is the the password you will use to sign into your account. Choose wisely</FieldDescription>
         <Field type="password" name="password" required 
           value={this.state.FormData["password"]} onChange={this.handleChange} />
+      </FieldContainer>
+      <FieldContainer>
+        <Captcha data={this.getCaptchaData}/>
       </FieldContainer>
       <FieldContainer>
         <Submit type="submit" value="Submit" />

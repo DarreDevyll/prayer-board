@@ -33,8 +33,17 @@ export const CaptchaBox = styled.label`
     display:none;
 `;
 
+export const FailedCaptcha = styled.div`
+  display: ${({ isFailed }) => isFailed ? 'flex' : 'none'};
+  flex-direction: column;
+  transition: display 1s;
+  opacity: 1;
+  transition: opacity 1s linear;
+`;
+
 
 export const CheckBox = styled.div`
+    padding-left: 40px;
 `;
 
 export const Box = styled.label`
