@@ -87,10 +87,10 @@ class Captcha extends Component {
     // Check if captcha correct
     if (form['captcha'].value.toLowerCase() == Value[this.state.image])
     {
-      this.state.input=true;
-      data.input = true;
-      data.time = this.state.time;
-      this.props.data(data);
+      this.state.input=true;      // set input to true so captcha go away
+      data.input = true;          // tell form captcha completed
+      data.time = this.state.time;// tell form how long to complete
+      this.props.data(data);      // send data to for
     } 
     // if incorrect
     else {
