@@ -64,11 +64,11 @@ class UserCreationForm extends Component {
 
     console.log(this.state.FormData);
 
-    /*
+    
     // Posting form to endpoint, and changing Submitted flag if successful (status = 201)
-    fetch('https://localhost:5000/createUser', options)
+    fetch('http://localhost:5000/createuser', options)
     .then((response) => {
-      if (response.status == 201){
+      if (response.status == 200){
         this.setState({Submitted: true});
         return response.json();
       }
@@ -76,7 +76,7 @@ class UserCreationForm extends Component {
     .catch((err) => {
         console.log(err.message);
     })
-    */
+    
   }
 
   getCaptchaData = (data) => {

@@ -2,6 +2,8 @@ import {Component} from 'react';
 
 import { Content } from '../components/styles/Content.styled';
 import List from "../components/List";
+import VideoHeader from '../components/VideoHeader';
+
 
 class Home extends Component {
   constructor(props) {
@@ -30,8 +32,14 @@ class Home extends Component {
   
 
   render(){
+  const video = {
+    file: "three_candles.mp4",
+    type: "video/mp4"
+  }
+
   return (
     <>
+    <VideoHeader video={video} />
     <Content>
       <div>
         <p>This is the home page</p>
