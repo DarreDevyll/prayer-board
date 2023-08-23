@@ -14,13 +14,14 @@ export const Video = styled.video`
   margin: auto;
 	width: 100%;
 	height: auto;
+  filter: blur(5px);
 `;
 
 export const TextContainer = styled.div`
 	width: 60%;
 	height: 300px;
 	margin: auto;
-	background: rgba(128, 130, 45, .7);
+	background: linear-gradient(to bottom right, rgba(96,81,15,.6) 0%, rgba(200,175,29,.8) 44%, rgba(92,79,7,.7) 87%);
 	position: fixed;
 	top: 200px;
 	margin-left: 20%;

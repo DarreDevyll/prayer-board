@@ -26,7 +26,7 @@ const lightTheme = {
 const darkTheme = {
   colors: {
     header: '#000',
-    body: '#333',
+    body: '#222',
     footer: '#003333'
 },
 mobile: '768px',
