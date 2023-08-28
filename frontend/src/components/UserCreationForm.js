@@ -2,7 +2,7 @@ import { Component } from "react"
 import { 
   StyledForm,
   Label, 
-  Field, 
+  TextField, 
   Submit, 
   FieldContainer, 
   FieldDescription,
@@ -100,25 +100,25 @@ class UserCreationForm extends Component {
       <FieldContainer>
         <Label>Name<Req>*</Req></Label>
         <FieldDescription>This is the name that will be displayed when making prayers/testimonies. We prefer your real first name.</FieldDescription>
-        <Field type="text" name="name" required 
+        <TextField type="text" name="name" required 
           value={this.state.FormData["name"]} onChange={this.handleChange} />
       </FieldContainer>
       <FieldContainer>
         <Label>LoginID<Req>*</Req></Label>
         <FieldDescription>This is the name you will use to sign into your account. Feel free to make it whatever you want.</FieldDescription>
-        <Field type="text" name="loginID" required 
+        <TextField type="text" name="loginID" required 
           value={this.state.FormData["loginID"]} onChange={this.handleChange} />
       </FieldContainer>
       <FieldContainer>
         <Label>Email<Req>*</Req></Label>
         <FieldDescription>Please enter a valid email for activating your account.</FieldDescription>
-        <Field type="email" name="email" required 
+        <TextField type="email" name="email" required 
           value={this.state.FormData["email"]} onChange={this.handleChange} />
       </FieldContainer>
       <FieldContainer>
         <Label>Password<Req>*</Req></Label>
         <FieldDescription>This is the the password you will use to sign into your account. Choose wisely</FieldDescription>
-        <Field type="password" name="password" required 
+        <TextField type="password" name="password" required 
           value={this.state.FormData["password"]} onChange={this.handleChange} />
       </FieldContainer>
       <FieldContainer>

@@ -39,6 +39,9 @@ module.exports = function(req, res, next) {
     return next();
 }*/
 
+// SQL command for selecting everything older than 30 days
+// select * from prayers WHERE dateCreated < DATE_SUB(NOW(), INTERVAL 30 DAY);
+
 app.get("/", (req, res) => {
 	pool.getConnection()
 	.then((conn) => {
@@ -63,7 +66,7 @@ app.get("/", (req, res) => {
 app.get("/prayers", (req, res) => {
 	pool.getConnection()
 	.then((conn) => {
-		conn.query("SELECT prayers.id, users.name, title, description, prayers.dateCreated from prayers left join users on prayers.uid = users.id;")
+		conn.query("SELECT prayers.id, users.name, title, description, prayers.dateCreated from prayers left join users on prayers.uid = users.id order by dateCreated desc;")
 		.then((rows) => {
 			res.send(rows);
 			conn.end();
@@ -116,6 +119,52 @@ app.get("/numtestimonies", (req, res) => {
 	});
 });
 
+app.post('/createprayer', [
+	check('Title').notEmpty(),
+	check('Description').notEmpty().trim(),
+], (req, res) => {
+
+	const result = validationResult(req);
+
+	if(result.isEmpty()) {
+
+		// create user object from
+		var values = [
+			req.body.Title,
+			req.body.Description
+		]
+
+
+		// send data to database
+		pool.getConnection()
+		.then((conn) => {
+			conn.query('INSERT INTO prayers (title, description) VALUES (?, ?)', 
+			values, 
+			function(err, result)
+			{
+				if (!err) {}
+				else {throw err;}
+			})
+			.then((response) => {
+				// DO SOMETHING WITH RESPONSE
+				res.statusMessage = 'Successfully posted prayer';
+				res.status(200).end();
+				conn.end();
+			})
+			.catch(err => {
+				console.log(err);
+				conn.end();
+			})
+		})
+		.catch(err => {
+			console.log(err);
+		})
+	}
+	else {
+		console.log(result);
+	}
+});
+
 app.post('/createuser', [
 	check('name').notEmpty(),
 	check('loginID').notEmpty().trim(),
@@ -126,14 +175,13 @@ app.post('/createuser', [
 	const result = validationResult(req);
 
 	if(result.isEmpty()) {
-		console.log(req.body.name);
 
 		// create user object from
 		var values = [
-			"Daran",
-			"Darre",
-			"Daran2011",
-			"daran.parkman@gmail.com"
+			req.body.name,
+			req.body.loginID,
+			req.body.password,
+			req.body.email
 		]
 
 

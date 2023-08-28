@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const StyledForm = styled.form`
-  border: 3px solid #000;
-  background-color: #111;
+  margin-top: 20px;
+  box-shadow: 0px 0px 0px 3px #222, 0px 0px 0px 5px #555;
+  background-color: #555;
   color: #fff;
+  min-width: 50%;
   
   display: ${({show}) => show ? 'none' : 'flex'};
   flex-direction: column;
@@ -26,8 +28,13 @@ export const Label = styled.div`
   text-align: left;
 `;
 
-export const Field = styled.input`
+export const TextField = styled.input`
+  font-size: 1rem;
+`;
 
+export const TextareaField = styled.textarea`
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
 `;
 
 export const FieldDescription = styled.div`
