@@ -80,6 +80,9 @@ const Navbar = ({childToParent}) => {
         <NavLink to='/testimonies' activestyle="true">
             Testimonies
         </NavLink>
+        <NavLink to='/guestPrayer' activestyle="true">
+            Create Prayer
+        </NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>

@@ -22,7 +22,7 @@ export const TextContainer = styled.div`
 	height: 300px;
 	margin: auto;
 	background: linear-gradient(to bottom right, rgba(96,81,15,.6) 0%, rgba(200,175,29,.8) 44%, rgba(92,79,7,.7) 87%);
-	position: fixed;
+	position: absolute;
 	top: 200px;
 	margin-left: 20%;
 	margin-right: 20%;

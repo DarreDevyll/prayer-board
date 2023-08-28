@@ -12,6 +12,7 @@ import './App.css';
 import Home from './pages/Home';
 import Prayers from './pages/Prayers';
 import Testimonies from './pages/Testimonies';
+import GuestPrayer from './pages/GuestPrayer';
 import Signup from './pages/Signup';
 
 const lightTheme = {
@@ -83,6 +84,7 @@ class App extends Component {
             <Route path='/' exact element={<Home />} />
             <Route path='/prayers' exact element={<Prayers />} />
             <Route path='/testimonies' exact element={<Testimonies />} />
+            <Route path='/guestPrayer' exact element={<GuestPrayer />} />
             <Route path='/signup' exact element={<Signup />} />
           </Routes>
         </ThemeProvider>

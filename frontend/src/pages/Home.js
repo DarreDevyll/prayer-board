@@ -1,8 +1,14 @@
 import {Component} from 'react';
+import { styled } from 'styled-components';
 
 import { Content } from '../components/styles/Content.styled';
 import List from "../components/List";
 import VideoHeader from '../components/VideoHeader';
+import { HomeContent } from '../components/HomeContent';
+
+const Body = styled.div`
+  margin-top: 100px;
+`
 
 
 class Home extends Component {
@@ -29,8 +35,6 @@ class Home extends Component {
     return body;
   }
 
-  
-
   render(){
   const video = {
     file: "three_candles.mp4",
@@ -40,11 +44,11 @@ class Home extends Component {
   return (
     <>
     <VideoHeader video={video} />
+    <Body>
     <Content>
-      <div>
-        <p>This is the home page</p>
-      </div>
+      <HomeContent />
     </Content>
+    </Body>
     </>
   )}
 }
