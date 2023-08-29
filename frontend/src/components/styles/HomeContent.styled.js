@@ -4,6 +4,7 @@ export const Card = styled.div`
   max-Height: 400px;
   display: flex;
   flex-direction:row;
+  align-items: space-evenly;
   justify-content: space-evenly;
   background-color: #333;
   padding: 15px 10px;
@@ -25,12 +26,16 @@ export const CardTitle = styled.div`
   width: 100%;
   font-size: 30px;
   margin: 10px 15px;
+  padding: auto;
+  margin: auto;
 `
 
 export const CardBody = styled.div`
   width: 100%;
   font-size: 20px;
   margin: 7px 15px;
+  padding: auto;
+  margin: auto;
 `
 
 export const CardImage = styled.div`

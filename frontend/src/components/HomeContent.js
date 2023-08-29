@@ -14,7 +14,7 @@ export function HomeContent() {
         <CardBody>
           <FaCircle font-size="12px" />&nbsp;That through the ministries God has brought here, 
           lives would be changed and more would come to know Jesus.
-          </CardBody>
+        </CardBody>
       </CardText>
       <CardImage>
         <ImageContainer></ImageContainer>
@@ -37,7 +37,7 @@ export function HomeContent() {
         </CardBody>
         <CardBody>
           <FaCircle font-size="12px" />&nbsp;Unified in mission and faith
-          </CardBody>
+        </CardBody>
         <CardBody>
           <FaCircle font-size="12px" />&nbsp;Building faith and hope for Dekalb through seeing 
           what God is doing in this city
